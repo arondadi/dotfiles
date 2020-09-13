@@ -34,14 +34,6 @@ autocmd FileType yml setlocal ts=2 sts=2 sw=2 expandtab
 " Line numbering
 set number
 
-" Indentation for tabs
-set tabstop=4
-set shiftwidth=4
-set expandtab
-set autoindent
-
-filetype indent on
-
 " Format of python code
 au BufNewFile,BufRead *.py set tabstop=4 
     \ softtabstop=4
@@ -50,6 +42,24 @@ au BufNewFile,BufRead *.py set tabstop=4
     \ expandtab
     \ autoindent
     \ fileformat=unix
+
+au BufNewFile,BufRead *.js, *.html, *.css set tabstop=2
+    \ set softtabstop=2
+    \ set shiftwidth=2
+
+" by default, the indent is 2 spaces.
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
+
+" for html/rb files, 2 spaces
+autocmd Filetype html setlocal ts=2 sw=2 expandtab
+autocmd Filetype ruby setlocal ts=2 sw=2 expandtab
+
+" for js/coffee/jade files, 4 spaces
+autocmd Filetype javascript setlocal ts=4 sw=4 sts=0 expandtab
+autocmd Filetype coffeescript setlocal ts=4 sw=4 sts=0 expandtab
+autocmd Filetype jade setlocal ts=4 sw=4 sts=0 expandtab
 
 " Location of clangd for C language support for YCM
 let g:ycm_clangd_binary_path = "/usr/bin/clangd-10"
